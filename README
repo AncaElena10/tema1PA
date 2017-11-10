@@ -1,0 +1,53 @@
+Moisa Anca-Elena
+321CA
+TEMA 1 PA
+
+Problema 1
+
+Programul functioneaza astfel: in functia computePalindrome primesc un cuvant
+pe care il parcurg. Position va fi pozitia elementului care urmeaza a fi permutat 
+sau nu. Iau prima litera a cuvantului, si o caut in functia charPosition. Daca 
+aceasta exista intre indicii primiti(adica intre urmatoarele pozitii pe care nu 
+le-am mai vizitat), inseamna ca litera respectiva se mai gaseste in cuvant, deci 
+salvez indicele si duc noua litera catre margine pentru a o pozitiona in 'oglinda' 
+cu litera primita. Daca nu se gaseste, inseamna ca e singura litera din cuvant, 
+sau numarul de litere este impar, deci o voi duce catre mijloc. Numarul minim de 
+inversiuni este dat de diferenta dintre indicii primiti.
+
+Complexitate problema: O(n^2)
+
+Problema 2
+
+Pentru rezolvarea problemei am aplicat algoritmul Levenshtein, un pic modificat. 
+Am construit o matrice care va retine numarul de modificari ce trebuie aplicate 
+asupra cuvintelor. Initial am "bordat" matricea cu niste indici care reprezinta 
+numarul de editari de la o litera la alta. De la a la a, sunt 0 modificari, de la 
+a la b o modificare, si tot asa. 
+
+Ideea a fost ca daca spre exemplu am matricea 
+1 2 3
+4 5 6
+7 8 9 si vectorul [10 11 12], eu voi compara primul element din vector, 10, cu 
+fiecare element de pe prima coloana[1, 4, 7], al doilea element din vector, 11, 
+cu fiecare element de pe a doua coloana din matrice [2, 5, 8] si al treilea 
+element din vector, 12, cu fiecare element de pe a treia coloana a matricei [3, 6, 9].
+Daca 10 ar fi egal cu primul element din matrice, atunci nu trebuie facuta nicio 
+modificare, deci numarul minim de operatii care trebuie facute este dat de valoarea 
+de pe diagonala. Altfel, numarul minim de operatii va fi dat de minimul + 1 dintre 
+valorile din stanga, de deasupra si de pe diagonala. Voi initializa un contor cu 0, 
+care initial era 1. Dupa ce termin de parcurs toate literele de pe o diagonala a 
+matricei, daca contorul este 0, atunci voi folosi 3 variabile auxiliare. Left si up 
+au atribuita valoarea maxima in Integer, pentru ca ulterior sa pot face minimul.
+
+editsMatrix[i][j - 1] - sus
+editsMatrix[i - 1][j] - stanga
+editsMatrix[i - 1][j - 1] - diagonala
+
+Pentru citire am folosit BufferedReader.
+Inainte sa pun rezultatul final in fisier, l-am convertit in String.
+
+Complexitate problema: O(n^3)
+
+De mentionat!
+Prima problema este rezolvata in C, iar a doua in Java. Imi cer scuze daca asta va crea 
+neplaceri.
